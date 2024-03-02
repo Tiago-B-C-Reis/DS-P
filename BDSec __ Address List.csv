@@ -1,0 +1,10 @@
+Server,Address
+DBServer,dbserver2.cj4ayimkabok.us-east-1.rds.amazonaws.com
+Kerberos,ip-10-0-1-238.ec2.internal
+Kafka,ip-10-0-1-247.ec2.internal
+JumpBox-A,54.90.118.46
+JumpBox-B,54.226.210.26
+JumpBox-C,54.234.253.253
+JumpBox-D,107.21.138.239
+JumpBox-E,54.91.132.174
+JumpBox-F,3.90.235.193
