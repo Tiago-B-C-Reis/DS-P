@@ -4,7 +4,24 @@ Set the permissions of your private key so that only you can read it:
     https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/connect-to-linux-instance.html#connection-prereqs-private-key
     "chmod 400 key-pair-name.pem"
 
-
-Access to the EC2 virtual machine (instance): (CLI only)
+# Access to the EC2 virtual machine (instance): (CLI only)
         Ex: ssh -i "PEM_FILES_PATH" ubuntu@JUMPBOX_IP
-    ssh -i /Users/tiagoreis/PycharmProjects/DS-P/groupF.pem ubuntu@3.90.235.193
+    ssh -i /Users/tiagoreis/PycharmProjects/DS-P/groupF.pem ubuntu@54.204.83.14
+
+
+
+# Access Postgres ----------------------------------------------------------------------------------------------------
+    # (dont use) psql -h DATABASE_SERVER_ENDPOINT -U GROUP_USERNAME -d DATABASE_GROUP_NAME
+
+    psql -h DATABASE_SERVER_ENDPOINT -U USERNAME
+        DATABASE_SERVER_ENDPOINT: dbserver2.cj4ayimkabok.us-east-1.rds.amazonaws.com
+        USERNAME: postgres
+        PASSWORD: mypasspsql
+
+        psql -h dbserver2.cj4ayimkabok.us-east-1.rds.amazonaws.com -U postgres
+
+    # list the databases
+        \l
+
+
+
