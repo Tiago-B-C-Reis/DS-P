@@ -1,3 +1,5 @@
+https://docs.google.com/spreadsheets/d/1FwBLd97XPRCbgpUTabQhqGyDW9xZV_cQMorO9gpGh9Y/edit#gid=0
+
 Install SSH
 
 Set the permissions of your private key so that only you can read it:
@@ -5,8 +7,9 @@ Set the permissions of your private key so that only you can read it:
     "chmod 400 key-pair-name.pem"
 
 # Access to the EC2 virtual machine (instance): (CLI only)
-        Ex: ssh -i "PEM_FILES_PATH" ubuntu@JUMPBOX_IP
-    ssh -i /Users/tiagoreis/PycharmProjects/DS-P/groupF.pem ubuntu@54.204.83.14
+    ssh -i "PEM_FILES_PATH" ubuntu@JUMPBOX_IP
+    Ex: ssh -i /Users/tiagoreis/PycharmProjects/DS-P/groupF.pem ubuntu@54.221.126.116
+        (always update the server link inside [] from the share file on the top)
 
 
 
@@ -17,6 +20,8 @@ Set the permissions of your private key so that only you can read it:
         DATABASE_SERVER_ENDPOINT: dbserver2.cj4ayimkabok.us-east-1.rds.amazonaws.com
         USERNAME: postgres
         PASSWORD: mypasspsql
+    ex:
+    psql -h dbserver2.cj4ayimkabok.us-east-1.rds.amazonaws.com -U postgres
 
         psql -h dbserver2.cj4ayimkabok.us-east-1.rds.amazonaws.com -U postgres
 
@@ -25,3 +30,23 @@ Set the permissions of your private key so that only you can read it:
 
 
 
+# Kafka Topics ----------------------------------------------------------------------------------------------------
+/etc/kafka/bin
+ls
+
+## Create kafka configs file inside server:
+nano /home/ubuntu/mykafka-config-tiago.txt
+
+############ Read from Kafka Topics
+./kafka-topics.sh --bootstrap-server [KAFKA_SERVER_HOSTNAME:9093] --list --command-config [PROPERTIES_FILE_PATH]
+ex:
+./kafka-topics.sh --bootstrap-server ip-10-0-1-247:9093 --list --command-config /home/ubuntu/mykafka-config-tiago.txt
+
+
+############ Create Kafka Topics
+bin/kafka-topics.sh --bootstrap-server host1:9092 --topic test-topic --partitions 3
+
+./kafka-topics.sh --bootstrap-server KAFKA_SERVER_HOSTNAME:9093 --topic MY_TOPIC --create --partitions 1 --replication-factor 1 --command-config PROPERTIES_FILE_PATH
+
+ex:
+./kafka-topics.sh --bootstrap-server ip-10-0-1-247:9093 --topic group_F.public.test_table --create --partitions 3 --replication-factor 1 --command-config /home/ubuntu/mykafka-config-tiago.txt
