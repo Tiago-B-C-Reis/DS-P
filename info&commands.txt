@@ -8,7 +8,7 @@ Set the permissions of your private key so that only you can read it:
 
 # Access to the EC2 virtual machine (instance): (CLI only)
     ssh -i "PEM_FILES_PATH" ubuntu@JUMPBOX_IP
-    Ex: ssh -i /Users/tiagoreis/PycharmProjects/DS-P/groupF.pem ubuntu@54.221.126.116
+    Ex: ssh -i /Users/tiagoreis/PycharmProjects/DS-P/groupF.pem ubuntu@54.160.230.226
         (always update the server link inside [] from the share file on the top)
 
 
@@ -27,7 +27,6 @@ Set the permissions of your private key so that only you can read it:
 
     # list the databases
         \l
-
 
 
 # Kafka Topics ----------------------------------------------------------------------------------------------------
@@ -49,4 +48,24 @@ bin/kafka-topics.sh --bootstrap-server host1:9092 --topic test-topic --partition
 ./kafka-topics.sh --bootstrap-server KAFKA_SERVER_HOSTNAME:9093 --topic MY_TOPIC --create --partitions 1 --replication-factor 1 --command-config PROPERTIES_FILE_PATH
 
 ex:
-./kafka-topics.sh --bootstrap-server ip-10-0-1-247:9093 --topic group_F.public.test_table --create --partitions 3 --replication-factor 1 --command-config /home/ubuntu/mykafka-config-tiago.txt
+./kafka-topics.sh --bootstrap-server ip-10-0-1-247:9093 --topic groupF.public.customers --create --partitions 3 --replication-factor 1 --command-config /home/ubuntu/mykafka-config-tiago.txt
+./kafka-topics.sh --bootstrap-server ip-10-0-1-247:9093 --topic group_F.public.customers --delete --command-config /home/ubuntu/mykafka-config-tiago.txt
+
+
+############ List Kafka Topics
+/etc/kafka/bin
+./kafka-topics.sh --bootstrap-server ip-10-0-1-247:9093 --list --command-config /home/ubuntu/mykafka-config-tiago.txt
+
+
+
+
+
+############# Running and configuring Kafka-Connect
+
+
+
+
+
+############# Registering Kafka-Connect Source connector
+curl -i -X POST -H "Accept:application/json" -H "Content-Type:application/json"
+

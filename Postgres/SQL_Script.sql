@@ -1,5 +1,5 @@
 -- Command to create the first database
-CREATE DATABASE first_database;
+CREATE DATABASE db_group_F;
 
 -- Command to create the second database
 CREATE DATABASE second_database;
@@ -25,3 +25,18 @@ CREATE TABLE table2 (
     city VARCHAR(100),
     population INT
 );
+
+
+\l -- list all databases
+\c db_group_F -- connect to a database
+\dt -- list all tables in the current database
+\q -- quit psql
+
+CREATE TABLE customers (id int GENERATED ALWAYS AS IDENTITY
+PRIMARY KEY, name text);
+
+ALTER TABLE customers REPLICA IDENTITY USING INDEX customers_pkey;
+
+INSERT INTO customers (name) VALUES ('joe'), ('bob'), ('sue');
+
+CREATE TABLE customers_replica (id int PRIMARY KEY, name text);
