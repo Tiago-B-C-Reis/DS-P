@@ -1,9 +1,0 @@
-sasl.mechanism=GSSAPI
-security.protocol=SASL_PLAINTEXT
-sasl.kerberos.service.name=kafka
-sasl.jaas.config=com.sun.security.auth.module.Krb5LoginModule required \
-useKeyTab=true \
-storeKey=true \
-keyTab="/home/ubuntu/kafka_admin.keytab" \
-principal="kafka_admin@IPP.PT" \
-useTicketCache=true;

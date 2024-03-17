@@ -1,0 +1,40 @@
+############# Running and configuring Kafka-Connect
+cd /etc/kafka/bin/
+sudo ./connect-distributed.sh ../config/connect-distributed.properties
+
+
+
+# Kafka Connect Distributed Worker Configuration ----------------------------------------------------------
+# The Kafka Connect distributed worker is a runtime that runs connectors and their tasks. This file
+# provides the initial configuration for the Kafka Connect distributed worker. It is a properties file
+# with the following format:
+
+
+plugin.path=/var/kafka-connect/plugins
+
+sasl.mechanism=GSSAPI
+security.protocol=SASL_PLAINTEXT
+sasl.kerberos.service.name=kafka
+sasl.jaas.config=com.sun.security.auth.module.Krb5LoginModule required \
+useKeyTab=true \
+storeKey=true \
+keyTab="/home/ubuntu/kafka_admin.keytab" \
+principal="kafka_admin@IPP.PT";
+
+producer.sasl.mechanism=GSSAPI
+producer.sasl.kerberos.service.name=kafka
+producer.security.protocol=SASL_PLAINTEXT
+producer.sasl.jaas.config=com.sun.security.auth.module.Krb5LoginModule required \
+useKeyTab=true \
+storeKey=true \
+keyTab="/home/ubuntu/kafka_admin.keytab" \
+principal=kafka_admin@IPP.PT";
+
+consumer.sasl.mechanism=GSSAPI
+consumer.sasl.kerberos.service.name=kafka
+consumer.security.protocol=SASL_PLAINTEXT
+consumer.sasl.jaas.config=com.sun.security.auth.module.Krb5LoginModule required \
+useKeyTab=true \
+storeKey=true \
+keyTab="/home/ubuntu/kafka_admin.keytab" \
+principal=kafka_admin@IPP.PT";

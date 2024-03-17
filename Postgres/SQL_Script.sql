@@ -2,14 +2,14 @@
 CREATE DATABASE db_group_F;
 
 -- Command to create the second database
-CREATE DATABASE second_database;
+CREATE DATABASE db_grupo_f_replica;
 
 
 -- Switch to the first database
-\c first_database;
+\c db_group_F;
 
 -- Create a table in the first database
-CREATE TABLE table1 (
+CREATE TABLE customers (
     id SERIAL PRIMARY KEY,
     name VARCHAR(100),
     age INT
@@ -17,10 +17,10 @@ CREATE TABLE table1 (
 
 
 -- Switch to the second database
-\c second_database;
+\c db_grupo_f_replica;
 
 -- Create a table in the second database
-CREATE TABLE table2 (
+CREATE TABLE customers_replica (
     id SERIAL PRIMARY KEY,
     city VARCHAR(100),
     population INT

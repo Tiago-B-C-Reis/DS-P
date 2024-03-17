@@ -9,7 +9,8 @@
     "database.password": "mypasspsql",
     "database.dbname": "db_grupo_f",
     "database.server.name": "dbserver2.cj4ayimkabok.us-east-1.rds.amazonaws.com",
-    "table.whitelist": "db_grupo_f.customer",
-    "topic.prefix": "groupF.public.customers"
+    "table.whitelist": "db_grupo_f.customers",
+    "topic.prefix": "groupF",
+    "slot.name": "debeziumgroupf"
   }
 }
