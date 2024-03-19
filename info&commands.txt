@@ -8,7 +8,7 @@ Set the permissions of your private key so that only you can read it:
 
 # Access to the EC2 virtual machine (instance): (CLI only)
     ssh -i "PEM_FILES_PATH" ubuntu@JUMPBOX_IP
-    Ex: ssh -i /Users/tiagoreis/PycharmProjects/DS-P/groupF.pem ubuntu@52.91.49.249
+    Ex: ssh -i /Users/tiagoreis/PycharmProjects/DS-P/groupF.pem ubuntu@100.26.40.111
         (always update the server link inside [] from the share file on the top)
 
 

@@ -6,7 +6,7 @@ CREATE DATABASE db_grupo_f_replica;
 
 
 -- Switch to the first database
-\c db_group_F;
+\c db_grupo_f;
 
 -- Create a table in the first database
 CREATE TABLE customers (
@@ -28,7 +28,7 @@ CREATE TABLE customers_replica (
 
 
 \l -- list all databases
-\c db_group_F -- connect to a database
+\c db_grupo_f -- connect to a database
 \dt -- list all tables in the current database
 \q -- quit psql
 

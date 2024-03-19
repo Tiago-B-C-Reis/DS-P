@@ -1,0 +1,33 @@
+Run Kafka-connect:
+cd /etc/kafka/bin
+./connect-distributed.sh ../config/connect-distributed.properties
+
+
+Keberos - generating keytabs:
+# Entering Kerberos server
+ssh -i /home/ubuntu/myserver.pem ec2-user@ip-10-0-1-238
+
+# Create a new principal (user)
+sudo kadmin.local -q "addprinc -randkey groupF@IPP.PT"
+
+# Create a new keytab (credentials/password)
+sudo kadmin.local -q "ktadd -norandkey -k principal_groupF.keytab groupF@IPP.PT"
+
+# Move keytab to jumpbox
+scp -i "/home/ubuntu/myserver.pem" ec2-user@ip-10-0-1-238:/home/ec2-user/principal_groupF.keytab "/home/ubuntu/principal_groupF.keytab"
+
+
+Manage ACL:
+grant permissions (groups):
+cd /etc/kafka/bin
+
+./kafka-acls.sh --bootstrap-server ip-10-0-1-247:9093 --list --command-config /home/ubuntu/mykafka-config-tiago.txt
+./kafka-acls.sh --bootstrap-server ip-10-0-1-247:9093 --add --allow-principal User:groupF --operation All --group groupF.public.customers --command-config /home/ubuntu/mykafka-config-tiago.txt
+
+
+grant permissions (topics):
+cd /etc/kafka/bin
+
+./kafka-acls.sh --bootstrap-server ip-10-0-1-247:9093 --command-config /home/ubuntu/mykafka-config-tiago.txt --add --allow-principal User:groupF --operation All --topic connect-offsets-groupF
+./kafka-acls.sh --bootstrap-server ip-10-0-1-247:9093 --command-config /home/ubuntu/mykafka-config-tiago.txt --add --allow-principal User:groupF --operation All --topic connect-configs-groupF
+./kafka-acls.sh --bootstrap-server ip-10-0-1-247:9093 --command-config /home/ubuntu/mykafka-config-tiago.txt --add --allow-principal User:groupF --operation All --topic connect-status-groupF

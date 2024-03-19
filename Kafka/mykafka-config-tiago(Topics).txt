@@ -19,6 +19,12 @@ ex:
 ex:
 ./kafka-topics.sh --bootstrap-server ip-10-0-1-247:9093 --topic groupF.public.customers --create --partitions 3 --replication-factor 1 --command-config /home/ubuntu/mykafka-config-tiago.txt
 
+./kafka-topics.sh --bootstrap-server ip-10-0-1-247:9093 --topic groupF.public.customers --create --partitions 3 --replication-factor 1 --command-config /home/ubuntu/mykafka-config-tiago.txt
+
+mykafka-config-grupof.txt
+
+
+
 ############ List Kafka Topics Delete Kafka Topics
 ./kafka-topics.sh --bootstrap-server ip-10-0-1-247:9093 --topic group_F.public.customers --delete --command-config /home/ubuntu/mykafka-config-tiago.txt
 
